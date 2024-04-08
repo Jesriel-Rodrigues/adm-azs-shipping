@@ -1,4 +1,4 @@
-package com.fretes.azchip.dominio.enums;
+package com.fretes.azchip.v1.dominio.enums;
 
 public enum StatusFrete {
     

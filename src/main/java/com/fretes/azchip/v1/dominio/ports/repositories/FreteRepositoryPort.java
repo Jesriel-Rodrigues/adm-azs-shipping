@@ -1,10 +1,10 @@
-package com.fretes.azchip.dominio.ports.repositories;
+package com.fretes.azchip.v1.dominio.ports.repositories;
 
 import java.util.List;
 import java.util.UUID;
 
-import com.fretes.azchip.dominio.Frete;
-import com.fretes.azchip.dominio.enums.StatusFrete;
+import com.fretes.azchip.v1.dominio.Frete;
+import com.fretes.azchip.v1.dominio.enums.StatusFrete;
 
 public interface FreteRepositoryPort {
     

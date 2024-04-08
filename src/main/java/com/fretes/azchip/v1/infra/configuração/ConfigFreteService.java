@@ -1,11 +1,11 @@
-package com.fretes.azchip.infra.configuração;
+package com.fretes.azchip.v1.infra.configuração;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.fretes.azchip.dominio.adaptadores.FreteServiceImpl;
-import com.fretes.azchip.dominio.ports.interfaces.FreteServicePort;
-import com.fretes.azchip.dominio.ports.repositories.FreteRepositoryPort;
+import com.fretes.azchip.v1.dominio.adaptadores.FreteServiceImpl;
+import com.fretes.azchip.v1.dominio.ports.interfaces.FreteServicePort;
+import com.fretes.azchip.v1.dominio.ports.repositories.FreteRepositoryPort;
 
 @Configuration
 public class ConfigFreteService {

@@ -1,15 +1,13 @@
-package com.fretes.azchip.dominio.adaptadores;
+package com.fretes.azchip.v1.dominio.adaptadores;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-import java.time.LocalDateTime;
-
-import com.fretes.azchip.dominio.Frete;
-import com.fretes.azchip.dominio.dtos.FreteDto;
-import com.fretes.azchip.dominio.enums.StatusFrete;
-import com.fretes.azchip.dominio.ports.interfaces.FreteServicePort;
-import com.fretes.azchip.dominio.ports.repositories.FreteRepositoryPort;
+import com.fretes.azchip.v1.dominio.Frete;
+import com.fretes.azchip.v1.dominio.dtos.FreteDto;
+import com.fretes.azchip.v1.dominio.enums.StatusFrete;
+import com.fretes.azchip.v1.dominio.ports.interfaces.FreteServicePort;
+import com.fretes.azchip.v1.dominio.ports.repositories.FreteRepositoryPort;
 
 public class FreteServiceImpl implements FreteServicePort{
 
@@ -33,23 +31,12 @@ public class FreteServiceImpl implements FreteServicePort{
     public FreteDto salvarEAtualizar(FreteDto freteDto) {
         
        
-        if (freteDto.getDataSaida() == null) {
-            throw new RuntimeException("Data inicial não pode ser vazia!");
-        }
-
-        if (isDataSaidaAntesDataChegada(freteDto.getDataSaida(), freteDto.getDataChegada())) {
-            throw new RuntimeException("Data inicial não pode ser maior que data final!");
-        }
+        
         
         Frete frete = new Frete(freteDto);
         frete = freteRepository.salvarEAtualizar(frete);
 
         return frete.toFreteDto();
-    }
-
-
-    public boolean isDataSaidaAntesDataChegada(LocalDateTime dataSaida, LocalDateTime dataChegada) {
-        return dataChegada == null || !dataSaida.isAfter(dataChegada);
     }
 
 

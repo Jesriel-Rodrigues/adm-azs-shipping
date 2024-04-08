@@ -1,11 +1,11 @@
-package com.fretes.azchip.infra.adaptadores.repositories;
+package com.fretes.azchip.v1.infra.adaptadores.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import java.util.UUID;
+import com.fretes.azchip.v1.infra.adaptadores.entities.FreteEntity;
 
-import com.fretes.azchip.infra.adaptadores.entities.FreteEntity;
+import java.util.UUID;
 import java.util.List;
 
 

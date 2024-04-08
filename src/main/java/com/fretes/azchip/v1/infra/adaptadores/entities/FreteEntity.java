@@ -1,4 +1,4 @@
-package com.fretes.azchip.infra.adaptadores.entities;
+package com.fretes.azchip.v1.infra.adaptadores.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -12,8 +12,8 @@ import lombok.Data;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-import com.fretes.azchip.dominio.Frete;
-import com.fretes.azchip.dominio.enums.StatusFrete;
+import com.fretes.azchip.v1.dominio.Frete;
+import com.fretes.azchip.v1.dominio.enums.StatusFrete;
 
 @Data
 @Entity

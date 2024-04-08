@@ -1,9 +1,9 @@
-package com.fretes.azchip.dominio.ports.interfaces;
+package com.fretes.azchip.v1.dominio.ports.interfaces;
 
 import java.util.List;
 
-import com.fretes.azchip.dominio.dtos.FreteDto;
-import com.fretes.azchip.dominio.enums.StatusFrete;
+import com.fretes.azchip.v1.dominio.dtos.FreteDto;
+import com.fretes.azchip.v1.dominio.enums.StatusFrete;
 
 public interface FreteServicePort {
     

@@ -4,7 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-import com.fretes.azchip.infra.adaptadores.repositories.SpringFreteRepository;
+import com.fretes.azchip.v1.infra.adaptadores.repositories.SpringFreteRepository;
 
 
 @EnableJpaRepositories(basePackageClasses = SpringFreteRepository.class)

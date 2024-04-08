@@ -1,4 +1,4 @@
-package com.fretes.azchip.infra.adaptadores.repositories;
+package com.fretes.azchip.v1.infra.adaptadores.repositories;
 
 import java.util.List;
 import java.util.Optional;
@@ -7,10 +7,11 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
-import com.fretes.azchip.dominio.Frete;
-import com.fretes.azchip.dominio.enums.StatusFrete;
-import com.fretes.azchip.dominio.ports.repositories.FreteRepositoryPort;
-import com.fretes.azchip.infra.adaptadores.entities.FreteEntity;
+import com.fretes.azchip.exceptions.ResourceNotFoundException;
+import com.fretes.azchip.v1.dominio.Frete;
+import com.fretes.azchip.v1.dominio.enums.StatusFrete;
+import com.fretes.azchip.v1.dominio.ports.repositories.FreteRepositoryPort;
+import com.fretes.azchip.v1.infra.adaptadores.entities.FreteEntity;
 
 @Service
 public class FreteRepository implements FreteRepositoryPort{
@@ -43,7 +44,7 @@ public class FreteRepository implements FreteRepositoryPort{
             return freteOpt.get().toFrete();
         }
 
-        throw new RuntimeException("Frete Não encontrado");
+        throw new ResourceNotFoundException("Frete Não encontrado");
     }
 
     @Override

@@ -1,10 +1,10 @@
-package com.fretes.azchip.aplicação;
+package com.fretes.azchip.v1.aplicação;
 
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fretes.azchip.dominio.dtos.FreteDto;
-import com.fretes.azchip.dominio.enums.StatusFrete;
-import com.fretes.azchip.dominio.ports.interfaces.FreteServicePort;
+import com.fretes.azchip.v1.dominio.dtos.FreteDto;
+import com.fretes.azchip.v1.dominio.enums.StatusFrete;
+import com.fretes.azchip.v1.dominio.ports.interfaces.FreteServicePort;
 
 import java.util.List;
 
