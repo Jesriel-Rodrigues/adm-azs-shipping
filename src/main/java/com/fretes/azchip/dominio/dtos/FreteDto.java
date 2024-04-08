@@ -3,6 +3,8 @@ package com.fretes.azchip.dominio.dtos;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+import com.fretes.azchip.dominio.enums.StatusFrete;
+
 public class FreteDto {
 
     private UUID uuid;
@@ -10,13 +12,13 @@ public class FreteDto {
     private LocalDateTime dataChegada;
     private String localRemetente;
     private String localDestinatario;
-    private String status;
+    private StatusFrete status;
     private String placaCarro;
 
 
 
     public FreteDto(UUID uuid, LocalDateTime dataSaida, LocalDateTime dataChegada, String localRemetente,
-            String localDestinatario, String status, String placaCarro) {
+            String localDestinatario, StatusFrete status, String placaCarro) {
         this.uuid = uuid;
         this.dataSaida = dataSaida;
         this.dataChegada = dataChegada;
@@ -25,6 +27,9 @@ public class FreteDto {
         this.status = status;
         this.placaCarro = placaCarro;
     }
+
+    //Getters and Setters
+    
     public UUID getUuid() {
         return uuid;
     }
@@ -55,10 +60,10 @@ public class FreteDto {
     public void setLocalDestinatario(String localDestinatario) {
         this.localDestinatario = localDestinatario;
     }
-    public String getStatus() {
+    public StatusFrete getStatus() {
         return status;
     }
-    public void setStatus(String status) {
+    public void setStatus(StatusFrete status) {
         this.status = status;
     }
     public String getPlacaCarro() {

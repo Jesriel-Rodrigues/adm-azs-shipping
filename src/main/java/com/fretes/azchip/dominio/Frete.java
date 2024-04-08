@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 import com.fretes.azchip.dominio.dtos.FreteDto;
+import com.fretes.azchip.dominio.enums.StatusFrete;
 
 public class Frete {
     
@@ -12,17 +13,16 @@ public class Frete {
     private LocalDateTime dataChegada;
     private String localRemetente;
     private String localDestinatario;
-    private String status;
+    private StatusFrete status;
     private String placaCarro;
 
     
     public Frete(){
-
     }
 
 
     public Frete(UUID uuid, LocalDateTime dataSaida, LocalDateTime dataChegada, String localRemetente,
-            String localDestinatario, String status, String placaCarro) {
+            String localDestinatario, StatusFrete status, String placaCarro) {
         this.uuid = uuid;
         this.dataSaida = dataSaida;
         this.dataChegada = dataChegada;
@@ -32,6 +32,21 @@ public class Frete {
         this.placaCarro = placaCarro;
     }
 
+    public Frete( FreteDto freteDto) {
+        this.uuid = freteDto.getUuid();
+        this.dataSaida = freteDto.getDataSaida();
+        this.dataChegada = freteDto.getDataChegada();
+        this.localRemetente = freteDto.getLocalRemetente();
+        this.localDestinatario = freteDto.getLocalDestinatario();
+        this.status = freteDto.getStatus();
+        this.placaCarro = freteDto.getPlacaCarro();
+    }
+
+    public FreteDto toFreteDto (){
+        return new FreteDto(this.uuid, this.dataSaida, this.dataChegada, this.localRemetente, this.localDestinatario, this.status, this.placaCarro);
+    }
+
+    //Getters and Setters
 
     public UUID getUuid() {
         return uuid;
@@ -83,12 +98,12 @@ public class Frete {
     }
 
 
-    public String getStatus() {
+    public StatusFrete getStatus() {
         return status;
     }
 
 
-    public void setStatus(String status) {
+    public void setStatus(StatusFrete status) {
         this.status = status;
     }
 
@@ -100,19 +115,5 @@ public class Frete {
 
     public void setPlacaCarro(String placaCarro) {
         this.placaCarro = placaCarro;
-    }
-
-
-    public Frete( FreteDto freteDto) {
-        this.dataSaida = freteDto.getDataSaida();
-        this.dataChegada = freteDto.getDataChegada();
-        this.localRemetente = freteDto.getLocalRemetente();
-        this.localDestinatario = freteDto.getLocalDestinatario();
-        this.status = freteDto.getStatus();
-        this.placaCarro = freteDto.getPlacaCarro();
-    }
-
-    public FreteDto toFreteDto (){
-        return new FreteDto(this.uuid, this.dataSaida, this.dataChegada, this.localRemetente, this.localDestinatario, this.status, this.placaCarro);
     }
 }
