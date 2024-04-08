@@ -8,6 +8,7 @@ import com.fretes.azchip.v1.dominio.dtos.FreteDto;
 import com.fretes.azchip.v1.dominio.enums.StatusFrete;
 import com.fretes.azchip.v1.dominio.ports.interfaces.FreteServicePort;
 import com.fretes.azchip.v1.dominio.ports.repositories.FreteRepositoryPort;
+import com.fretes.azchip.v1.utils.ValidarFrete;
 
 public class FreteServiceImpl implements FreteServicePort{
 
@@ -30,10 +31,10 @@ public class FreteServiceImpl implements FreteServicePort{
     @Override
     public FreteDto salvarEAtualizar(FreteDto freteDto) {
         
-       
-        
-        
         Frete frete = new Frete(freteDto);
+
+        ValidarFrete.validarFrete(frete);
+        
         frete = freteRepository.salvarEAtualizar(frete);
 
         return frete.toFreteDto();
