@@ -8,19 +8,19 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 
 import com.fretes.azchip.exceptions.ResourceNotFoundException;
-import com.fretes.azchip.v1.dominio.Frete;
 import com.fretes.azchip.v1.dominio.enums.StatusFrete;
+import com.fretes.azchip.v1.dominio.model.Frete;
 import com.fretes.azchip.v1.dominio.ports.repositories.FreteRepositoryPort;
 import com.fretes.azchip.v1.infra.adaptadores.entities.FreteEntity;
+import com.fretes.azchip.v1.infra.adaptadores.repositories.spring.SpringFreteRepository;
+
+import lombok.RequiredArgsConstructor;
 
 @Service
+@RequiredArgsConstructor
 public class FreteRepository implements FreteRepositoryPort{
 
     private final SpringFreteRepository springFreteRepository;
-
-    public FreteRepository(SpringFreteRepository springFreteRepositoy){
-        this.springFreteRepository = springFreteRepositoy;
-    }
 
     @Override
     public List<Frete> buscarTodosPorStatus(StatusFrete status) {
@@ -48,18 +48,10 @@ public class FreteRepository implements FreteRepositoryPort{
     }
 
     @Override
-    public Frete salvarEAtualizar(Frete frete) {
+    public Frete cadastrarFrete(Frete frete) {
 
-        FreteEntity freteEntity = null;
+        FreteEntity freteEntity = new FreteEntity(frete);
 
-        if (frete.getUuid() == null) {
-            freteEntity = new FreteEntity(frete);
-        }else {
-
-            buscarPorUuid(frete.getUuid());
-            freteEntity = new FreteEntity(frete);
-        }
-        
         freteEntity = springFreteRepository.save(freteEntity);
         
         return freteEntity.toFrete();

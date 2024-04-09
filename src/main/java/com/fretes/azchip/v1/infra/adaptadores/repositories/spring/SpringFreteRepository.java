@@ -1,4 +1,4 @@
-package com.fretes.azchip.v1.infra.adaptadores.repositories;
+package com.fretes.azchip.v1.infra.adaptadores.repositories.spring;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

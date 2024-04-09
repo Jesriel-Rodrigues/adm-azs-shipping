@@ -3,8 +3,8 @@ package com.fretes.azchip.v1.dominio.ports.repositories;
 import java.util.List;
 import java.util.UUID;
 
-import com.fretes.azchip.v1.dominio.Frete;
 import com.fretes.azchip.v1.dominio.enums.StatusFrete;
+import com.fretes.azchip.v1.dominio.model.Frete;
 
 public interface FreteRepositoryPort {
     
@@ -12,7 +12,7 @@ public interface FreteRepositoryPort {
 
     Frete buscarPorUuid( UUID uuid);
 
-    Frete salvarEAtualizar(Frete frete);
+    Frete cadastrarFrete(Frete frete);
 
     void remover( Frete frete);
 }

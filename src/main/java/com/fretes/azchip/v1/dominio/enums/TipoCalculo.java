@@ -1,15 +1,15 @@
 package com.fretes.azchip.v1.dominio.enums;
 
-public enum StatusFrete {
-    
-    EM_ANDAMENTO("Em andamento"),
-    CANCELADO("Cancelado"),
-    FINALIZADO("Finalizado");
+public enum TipoCalculo {
+
+    PESO("Peso"),
+    CUBAGEM("Cubagem"),
+    PESO_E_CUBAGEM("Peso e cubagem");
 
     private String descricao;
 
     
-    private StatusFrete(String descricao) {
+    private TipoCalculo(String descricao) {
         this.descricao = descricao;
     }
 
