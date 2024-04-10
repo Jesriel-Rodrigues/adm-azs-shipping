@@ -42,7 +42,7 @@ public class CubagemEntity {
     public CubagemEntity (Cubagem cubagem){
         this.id = cubagem.getId();
         this.alturaCm = cubagem.getAlturaCm();
-        this.larguraCm = cubagem.getAlturaCm();
+        this.larguraCm = cubagem.getLarguraCm();
         this.comprimentoCm = cubagem.getComprimentoCm();
     }
 

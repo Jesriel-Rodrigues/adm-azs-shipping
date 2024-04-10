@@ -1,13 +1,28 @@
-package com.fretes.azchip.v1.dominio.dtos;
+package com.fretes.azchip.v1.dominio.dtos.request;
+
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 public class EnderecoDto {
     
+    @NotBlank(message = "nomeRua nao pode ser nulo")
     private String nomeRua;
+
+    @NotBlank(message = "numeroCasa nao pode ser nulo")
     private String numeroCasa;
+
+    @NotBlank(message = "bairro nao pode ser nulo")
     private String bairro;
+
+    @NotBlank(message = "cidade nao pode ser nulo")
     private String cidade;
+
+    @NotBlank(message = "estado nao pode ser nulo")
     private String estado;
+
+    @NotNull(message = "cep nao pode ser nulo")
     private int cep;
+
     private String complemento;
 
 

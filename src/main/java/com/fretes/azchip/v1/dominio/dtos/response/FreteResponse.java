@@ -1,4 +1,4 @@
-package com.fretes.azchip.v1.dominio.dtos.put;
+package com.fretes.azchip.v1.dominio.dtos.response;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -6,48 +6,26 @@ import java.util.UUID;
 import com.fretes.azchip.v1.dominio.enums.StatusFrete;
 import com.fretes.azchip.v1.dominio.enums.TipoCalculo;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-
-
-public class FretePutRequest {
+public class FreteResponse {
     
-    @NotNull(message = "uuid nao pode ser nulo")
     private UUID uuid;
-
-    @NotBlank(message = "nomePacote nao pode ser nulo")
     private String nomePacote;
-
-    @NotNull(message = "dataPostagem nao pode ser nulo")
     private LocalDateTime dataPostagem;
-
-    @NotNull(message = "enderecoRemetente nao pode ser nulo")
-    @Valid
-    private EnderecoPutRequest enderecoRemetente;
-
-    @NotNull(message = "enderecoDestinatario nao pode ser nulo")
-    @Valid
-    private EnderecoPutRequest enderecoDestinatario;
-
+    private EnderecoResponse enderecoRemetente;
+    private EnderecoResponse enderecoDestinatario;
     private Double peso;
-
-    @Valid
-    private CubagemPutRequest cubagem;
-
-    @NotNull(message = "status nao pode ser nulo")
+    private CubagemResponse cubagem;
     private StatusFrete status;
-
-    @NotNull(message = "tipoCalculo nao pode ser nulo")
     private TipoCalculo tipoCalculo;
 
     
-    public FretePutRequest(){
+    public FreteResponse(){
     }
 
     
-    public FretePutRequest(UUID uuid, String nomePacote, LocalDateTime dataPostagem, EnderecoPutRequest enderecoRemetente,
-    EnderecoPutRequest enderecoDestinatario, Double peso, CubagemPutRequest cubagem, StatusFrete status,
+
+    public FreteResponse(UUID uuid, String nomePacote, LocalDateTime dataPostagem, EnderecoResponse enderecoRemetente,
+    EnderecoResponse enderecoDestinatario, Double peso, CubagemResponse cubagem, StatusFrete status,
             TipoCalculo tipoCalculo) {
         this.uuid = uuid;
         this.nomePacote = nomePacote;
@@ -84,19 +62,19 @@ public class FretePutRequest {
         this.dataPostagem = dataPostagem;
     }
 
-    public EnderecoPutRequest getEnderecoRemetente() {
+    public EnderecoResponse getEnderecoRemetente() {
         return enderecoRemetente;
     }
 
-    public void setEnderecoRemetente(EnderecoPutRequest enderecoRemetente) {
+    public void setEnderecoRemetente(EnderecoResponse enderecoRemetente) {
         this.enderecoRemetente = enderecoRemetente;
     }
 
-    public EnderecoPutRequest getEnderecoDestinatario() {
+    public EnderecoResponse getEnderecoDestinatario() {
         return enderecoDestinatario;
     }
 
-    public void setEnderecoDestinatario(EnderecoPutRequest enderecoDestinatario) {
+    public void setEnderecoDestinatario(EnderecoResponse enderecoDestinatario) {
         this.enderecoDestinatario = enderecoDestinatario;
     }
 
@@ -108,11 +86,11 @@ public class FretePutRequest {
         this.peso = peso;
     }
 
-    public CubagemPutRequest getCubagem() {
+    public CubagemResponse getCubagem() {
         return cubagem;
     }
 
-    public void setCubagem(CubagemPutRequest cubagem) {
+    public void setCubagem(CubagemResponse cubagem) {
         this.cubagem = cubagem;
     }
 

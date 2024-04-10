@@ -1,6 +1,8 @@
 package com.fretes.azchip.exceptions;
 
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,4 +19,5 @@ public class MensagemErrorCustom {
 	private String error;
 	private String message;
 	private String path;
+	private List<ErrorObject> errors;
 }

@@ -3,8 +3,9 @@ package com.fretes.azchip.v1.dominio.model;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-import com.fretes.azchip.v1.dominio.dtos.FreteDto;
 import com.fretes.azchip.v1.dominio.dtos.put.FretePutRequest;
+import com.fretes.azchip.v1.dominio.dtos.request.FreteDto;
+import com.fretes.azchip.v1.dominio.dtos.response.FreteResponse;
 import com.fretes.azchip.v1.dominio.enums.StatusFrete;
 import com.fretes.azchip.v1.dominio.enums.TipoCalculo;
 
@@ -54,6 +55,19 @@ public class Frete {
         this.tipoCalculo = freteDto.getTipoCalculo();
     }
 
+    public Frete(FreteResponse freteResponse) {
+
+        this.uuid = freteResponse.getUuid();
+        this.nomePacote = freteResponse.getNomePacote();
+        this.dataPostagem = freteResponse.getDataPostagem();
+        this.enderecoRemetente = new EnderecoRemetente(freteResponse.getEnderecoRemetente());
+        this.enderecoDestinatario =  new EnderecoDestinatario(freteResponse.getEnderecoDestinatario());
+        this.peso = freteResponse.getPeso();
+        this.cubagem = new Cubagem(freteResponse.getCubagem());
+        this.status = freteResponse.getStatus();
+        this.tipoCalculo = freteResponse.getTipoCalculo();
+    }
+
     public Frete(FretePutRequest fretePut) {
         
         this.uuid = fretePut.getUuid();
@@ -62,7 +76,7 @@ public class Frete {
         this.enderecoRemetente = new EnderecoRemetente(fretePut.getEnderecoRemetente());
         this.enderecoDestinatario =  new EnderecoDestinatario(fretePut.getEnderecoDestinatario());
         this.peso = fretePut.getPeso();
-        this.cubagem = new Cubagem(fretePut.getCubagem());
+        this.cubagem = fretePut.getCubagem() != null ? new Cubagem(fretePut.getCubagem()) : null;
         this.status = fretePut.getStatus();
         this.tipoCalculo = fretePut.getTipoCalculo();
     }
@@ -74,7 +88,19 @@ public class Frete {
         enderecoRemetente.toEnderecoDto(),
         enderecoDestinatario.toEnderecoDto(),
         peso,
-        cubagem.toCubagemDto(),
+        cubagem != null ? cubagem.toCubagemDto() : null,
+        status,
+        tipoCalculo);
+    }
+
+    public FreteResponse toFreteResponse() {
+        return new FreteResponse(uuid,
+        nomePacote,
+        dataPostagem,
+        enderecoRemetente.toEnderecoResponse(),
+        enderecoDestinatario.toEnderecoResponse(),
+        peso,
+        cubagem != null ? cubagem.toCubagemResponse() : null,
         status,
         tipoCalculo);
     }
@@ -83,10 +109,10 @@ public class Frete {
         return new FretePutRequest(uuid,
         nomePacote,
         dataPostagem,
-        enderecoRemetente.toEnderecoDto(),
-        enderecoDestinatario.toEnderecoDto(),
+        enderecoRemetente.toEnderecoPut(),
+        enderecoDestinatario.toEnderecoPut(),
         peso,
-        cubagem.toCubagemDto(),
+        cubagem.toCubagemPut(),
         status,
         tipoCalculo);
     }

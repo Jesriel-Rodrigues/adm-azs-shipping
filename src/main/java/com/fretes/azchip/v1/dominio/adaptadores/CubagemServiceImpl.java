@@ -1,7 +1,7 @@
 package com.fretes.azchip.v1.dominio.adaptadores;
 
-import com.fretes.azchip.v1.dominio.dtos.CubagemDto;
 import com.fretes.azchip.v1.dominio.dtos.put.CubagemPutRequest;
+import com.fretes.azchip.v1.dominio.dtos.request.CubagemDto;
 import com.fretes.azchip.v1.dominio.model.Cubagem;
 import com.fretes.azchip.v1.dominio.ports.interfaces.CubagemServicePort;
 import com.fretes.azchip.v1.dominio.ports.repositories.CubagemRepositoryPort;
@@ -24,8 +24,10 @@ public class CubagemServiceImpl implements CubagemServicePort{
 
     @Override
     public Cubagem atualizarCubagem(CubagemPutRequest cubagemPut) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'atualizarCubagem'");
+
+        Cubagem cubagem = new Cubagem(cubagemPut);
+        
+        return cubagemRepositoryPort.cadastrarCubagem(cubagem);
     }
 
     @Override

@@ -1,5 +1,7 @@
 package com.fretes.azchip.v1.infra.adaptadores.entities;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -24,28 +26,34 @@ import com.fretes.azchip.v1.dominio.model.Frete;
 @Table(name = "frete")
 public class FreteEntity {
     
-
     @Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
     private UUID uuid;
+
     private String nomePacote;
+
     private LocalDateTime dataPostagem;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "endereco_remetente_id", referencedColumnName = "id")
     private EnderecoRemetenteEntity enderecoRemetente;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "endereco_destinatario_id", referencedColumnName = "id")
     private EnderecoDestinatarioEntity enderecoDestinatario;
     
     private Double peso;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "cubagem_id", referencedColumnName = "id")
     private CubagemEntity cubagem;
     
+    @Column(name = "status")
+    @Enumerated(EnumType.STRING)
     private StatusFrete status;
+
+    @Column(name = "tipo_calculo")
+    @Enumerated(EnumType.STRING)
     private TipoCalculo tipoCalculo;
 
     public FreteEntity (){
@@ -72,7 +80,7 @@ public class FreteEntity {
         enderecoRemetente.toEnderecoRemetente(),
         enderecoDestinatario.toEnderecoDestinatario(),
         peso,
-        cubagem.toCubagem(),
+        cubagem != null ? cubagem.toCubagem() : null,
         status,
         tipoCalculo);
     }
@@ -84,7 +92,7 @@ public class FreteEntity {
         this.enderecoRemetente = new EnderecoRemetenteEntity(frete.getEnderecoRemetente());
         this.enderecoDestinatario = new EnderecoDestinatarioEntity(frete.getEnderecoDestinatario());
         this.peso = frete.getPeso();
-        this.cubagem = new CubagemEntity(frete.getCubagem());
+        this.cubagem = frete.getCubagem() != null ? new CubagemEntity(frete.getCubagem()) : null;
         this.status = frete.getStatus();
         this.tipoCalculo = frete.getTipoCalculo();
     }

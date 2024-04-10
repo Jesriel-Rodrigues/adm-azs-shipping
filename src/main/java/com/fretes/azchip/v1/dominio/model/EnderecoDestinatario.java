@@ -1,7 +1,8 @@
 package com.fretes.azchip.v1.dominio.model;
 
-import com.fretes.azchip.v1.dominio.dtos.EnderecoDto;
 import com.fretes.azchip.v1.dominio.dtos.put.EnderecoPutRequest;
+import com.fretes.azchip.v1.dominio.dtos.request.EnderecoDto;
+import com.fretes.azchip.v1.dominio.dtos.response.EnderecoResponse;
 
 public class EnderecoDestinatario {
 
@@ -38,6 +39,17 @@ public class EnderecoDestinatario {
         this.complemento = enderecoDto.getComplemento();
     }
 
+    public EnderecoDestinatario(EnderecoResponse enderecoResponse) {
+        this.id = enderecoResponse.getId();
+        this.nomeRua = enderecoResponse.getNomeRua();
+        this.numeroCasa = enderecoResponse.getNumeroCasa();
+        this.bairro = enderecoResponse.getBairro();
+        this.cidade = enderecoResponse.getCidade();
+        this.estado = enderecoResponse.getEstado();
+        this.cep = enderecoResponse.getCep();
+        this.complemento = enderecoResponse.getComplemento();
+    }
+
     public EnderecoDestinatario(EnderecoPutRequest enderecoPut) {
         this.id = enderecoPut.getId();
         this.nomeRua = enderecoPut.getNomeRua();
@@ -51,6 +63,10 @@ public class EnderecoDestinatario {
 
     public EnderecoDto toEnderecoDto(){
         return new EnderecoDto(nomeRua, numeroCasa, bairro, cidade, estado, cep, complemento);
+    }
+
+    public EnderecoResponse toEnderecoResponse(){
+        return new EnderecoResponse(id, nomeRua, numeroCasa, bairro, cidade, estado, cep, complemento);
     }
 
     public EnderecoPutRequest toEnderecoPut(){

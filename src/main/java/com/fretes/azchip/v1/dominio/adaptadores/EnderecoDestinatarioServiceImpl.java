@@ -1,7 +1,7 @@
 package com.fretes.azchip.v1.dominio.adaptadores;
 
-import com.fretes.azchip.v1.dominio.dtos.EnderecoDto;
 import com.fretes.azchip.v1.dominio.dtos.put.EnderecoPutRequest;
+import com.fretes.azchip.v1.dominio.dtos.request.EnderecoDto;
 import com.fretes.azchip.v1.dominio.model.EnderecoDestinatario;
 import com.fretes.azchip.v1.dominio.ports.interfaces.EnderecoDestinatarioServicePort;
 import com.fretes.azchip.v1.dominio.ports.repositories.EnderecoDestinatarioRepositoryPort;
@@ -25,8 +25,9 @@ public class EnderecoDestinatarioServiceImpl implements EnderecoDestinatarioServ
 
     @Override
     public EnderecoDestinatario atualizarEnderecoDestinatario(EnderecoPutRequest enderecoPut) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'atualizarEnderecoDestinatario'");
+        EnderecoDestinatario enderecoDestinatario = new EnderecoDestinatario(enderecoPut);
+
+        return enderecoDestinatarioRepositoryPort.cadastrarEnderecoDestinatario(enderecoDestinatario);
     }
 
     @Override

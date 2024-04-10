@@ -1,7 +1,8 @@
 package com.fretes.azchip.v1.dominio.model;
 
-import com.fretes.azchip.v1.dominio.dtos.CubagemDto;
 import com.fretes.azchip.v1.dominio.dtos.put.CubagemPutRequest;
+import com.fretes.azchip.v1.dominio.dtos.request.CubagemDto;
+import com.fretes.azchip.v1.dominio.dtos.response.CubagemResponse;
 
 public class Cubagem {
 
@@ -24,6 +25,13 @@ public class Cubagem {
         this.comprimentoCm = cubagemDto.getComprimentoCm();
     }
 
+    public Cubagem( CubagemResponse cubagemResponse) {
+        this.id = cubagemResponse.getId();
+        this.alturaCm = cubagemResponse.getAlturaCm();
+        this.larguraCm = cubagemResponse.getLarguraCm();
+        this.comprimentoCm = cubagemResponse.getComprimentoCm();
+    }
+
     public Cubagem( CubagemPutRequest cubagemPut) {
         this.id = cubagemPut.getId();
         this.alturaCm = cubagemPut.getAlturaCm();
@@ -33,6 +41,10 @@ public class Cubagem {
 
     public CubagemDto toCubagemDto(){
         return new CubagemDto(alturaCm, larguraCm, comprimentoCm);
+    }
+
+    public CubagemResponse toCubagemResponse(){
+        return new CubagemResponse(id, alturaCm, larguraCm, comprimentoCm);
     }
 
     public CubagemPutRequest toCubagemPut(){

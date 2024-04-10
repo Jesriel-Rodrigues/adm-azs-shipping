@@ -1,35 +1,18 @@
-package com.fretes.azchip.v1.dominio.dtos.put;
+package com.fretes.azchip.v1.dominio.dtos.response;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-
-public class EnderecoPutRequest {
- 
-    @NotNull(message = "id nao pode ser nulo")
-    private Long id;
-
-    @NotBlank(message = "nomeRua nao pode ser nulo")
-    private String nomeRua;
-
-    @NotBlank(message = "numeroCasa nao pode ser nulo")
-    private String numeroCasa;
-
-    @NotBlank(message = "bairro nao pode ser nulo")
-    private String bairro;
-
-    @NotBlank(message = "cidade nao pode ser nulo")
-    private String cidade;
-
-    @NotBlank(message = "estado nao pode ser nulo")
-    private String estado;
-
-    @NotNull(message = "cep nao pode ser nulo")
-    private int cep;
+public class EnderecoResponse {
     
+    private Long id;
+    private String nomeRua;
+    private String numeroCasa;
+    private String bairro;
+    private String cidade;
+    private String estado;
+    private int cep;
     private String complemento;
 
 
-    public EnderecoPutRequest(Long id, String nomeRua, String numeroCasa, String bairro, String cidade, String estado, int cep,
+    public EnderecoResponse(Long id, String nomeRua, String numeroCasa, String bairro, String cidade, String estado, int cep,
             String complemento) {
         this.id = id;
         this.nomeRua = nomeRua;

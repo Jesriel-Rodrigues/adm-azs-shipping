@@ -1,7 +1,7 @@
 package com.fretes.azchip.v1.dominio.adaptadores;
 
-import com.fretes.azchip.v1.dominio.dtos.EnderecoDto;
 import com.fretes.azchip.v1.dominio.dtos.put.EnderecoPutRequest;
+import com.fretes.azchip.v1.dominio.dtos.request.EnderecoDto;
 import com.fretes.azchip.v1.dominio.model.EnderecoRemetente;
 import com.fretes.azchip.v1.dominio.ports.interfaces.EnderecoRemetenteServicePort;
 import com.fretes.azchip.v1.dominio.ports.repositories.EnderecoRemetenteRepositoryPort;
@@ -23,8 +23,9 @@ public class EnderecoRemetenteServiceImpl implements EnderecoRemetenteServicePor
 
     @Override
     public EnderecoRemetente atualizarEnderecoRemetente(EnderecoPutRequest enderecoPut) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'atualizarEnderecoRemetente'");
+        EnderecoRemetente enderecoRemetente = new EnderecoRemetente(enderecoPut);
+
+        return enderecoRemetenteRepositoryPort.cadastrarEnderecoRemetente(enderecoRemetente);
     }
 
     @Override

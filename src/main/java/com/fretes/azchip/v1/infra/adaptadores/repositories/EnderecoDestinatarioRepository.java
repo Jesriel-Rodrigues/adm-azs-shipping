@@ -2,8 +2,7 @@ package com.fretes.azchip.v1.infra.adaptadores.repositories;
 
 import org.springframework.stereotype.Service;
 
-import com.fretes.azchip.v1.dominio.dtos.EnderecoDto;
-import com.fretes.azchip.v1.dominio.dtos.put.EnderecoPutRequest;
+import com.fretes.azchip.v1.dominio.dtos.request.EnderecoDto;
 import com.fretes.azchip.v1.dominio.model.EnderecoDestinatario;
 import com.fretes.azchip.v1.dominio.ports.repositories.EnderecoDestinatarioRepositoryPort;
 import com.fretes.azchip.v1.infra.adaptadores.entities.EnderecoDestinatarioEntity;
@@ -26,17 +25,4 @@ public class EnderecoDestinatarioRepository implements EnderecoDestinatarioRepos
 
         return enderecoDestinatarioEntity.toEnderecoDestinatario();
     }
-
-    @Override
-    public EnderecoDestinatario atualizarEnderecoDestinatario(EnderecoDestinatario enderecoPut) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'atualizarEnderecoDestinatario'");
-    }
-
-    @Override
-    public void remover(EnderecoDto enderecoDto) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'remover'");
-    }
-    
 }

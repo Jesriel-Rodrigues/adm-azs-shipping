@@ -1,18 +1,21 @@
 package com.fretes.azchip.v1.dominio.ports.interfaces;
 
-import java.util.List;
 
-import com.fretes.azchip.v1.dominio.dtos.FreteDto;
+import org.springframework.data.domain.Page;
+
 import com.fretes.azchip.v1.dominio.dtos.put.FretePutRequest;
-import com.fretes.azchip.v1.dominio.enums.StatusFrete;
+import com.fretes.azchip.v1.dominio.dtos.request.FreteDto;
+import com.fretes.azchip.v1.dominio.dtos.response.FreteResponse;
 
 public interface FreteServicePort {
-    
-    List<FreteDto> buscarTodosPorStatus( StatusFrete status);
 
-    FreteDto cadastrarFrete(FreteDto freteDto);
-
-    FretePutRequest atualizarFrete(FretePutRequest fretePut);
+    FreteResponse buscarPorUuidResponse(String freteUuid);
     
-    void remover( FreteDto freteDto);
+    Page<FreteResponse> buscarTodosPorStatus( String parametro);
+
+    FreteResponse cadastrarFrete(FreteDto freteDto);
+
+    FreteResponse atualizarFrete(FretePutRequest fretePut);
+    
+    void remover( String freteUuid);
 }
