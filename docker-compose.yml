@@ -15,20 +15,23 @@ services:
     networks:
       - minha-rede
 
-  # crud-aplication:
-  #   container_name: azchip-fretes
-  #   image: jesriel/azchip-fretes
-  #   environment:
-  #     - DB_URL=jdbc:postgresql://postgres:5432/usuarios
-  #   volumes:
-  #     - ./application.yml:/app/application.yml
-  #   ports:
-  #     - "8080:8080"
-  #   networks:
-  #     - minha-rede
+  azchip-fretes:
+    container_name: azchip-fretes
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - DB_URL=jdbc:postgresql://postgres:5432/Fretes
+    depends_on:
+      - postgres
+    ports:
+      - "8080:8080"
+    networks:
+      - minha-rede
 
 networks:
   minha-rede:
     driver: bridge
+
 volumes:
   pgdata:
