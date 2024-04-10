@@ -5,9 +5,11 @@
 
 Esse projeto foi desenvolvido com as seguintes tecnologias:
 
-- [Java 17](https://www.oracle.com/br/java/technologies/javase/javase-jdk17-downloads.html)
-- [PostgreSQL](https://www.postgresql.org/)
-- [Spring Boot](https://spring.io/projects/spring-boot)
+- Linguagem de Programação: [Java 17](https://www.oracle.com/br/java/technologies/javase/javase-jdk17-downloads.html)
+- Banco de dados: [PostgreSQL](https://www.postgresql.org/)
+- Frameworks: [Spring Boot](https://spring.io/projects/spring-boot)
+- Ferramentas : [Docker](https://www.docker.com/)
+- Arquitetura de projeto: [Port And Adapters](https://medium.com/bemobi-tech/ports-adapters-architecture-ou-arquitetura-hexagonal-b4b9904dad1a)
 
 
 ## 💻 Projeto
@@ -26,8 +28,9 @@ utilizando principalmente arquitetura HEXAGONAL e os metodos de segurança com o
 ## 🚀 Como executar
 
 - Clone o repositório
-- Acesse a pasta `deploy` do projeto no terminal do docker
-- Rode o comando `docker-compose up -d`
+- Acesse a pasta do projeto no terminal do docker
+- Rode o comando `docker-compose build`
+- Após finalizar o comando acima rode o comando `docker-compose up -d`
 - Utilize o insomnia ou postman para fazer os testes
 
 ## Documentaçao
