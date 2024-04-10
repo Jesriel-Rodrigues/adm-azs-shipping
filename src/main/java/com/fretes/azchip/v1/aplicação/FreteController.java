@@ -5,12 +5,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fretes.azchip.v1.dominio.dtos.put.FretePutRequest;
 import com.fretes.azchip.v1.dominio.dtos.request.FreteDto;
 import com.fretes.azchip.v1.dominio.dtos.response.FreteResponse;
-import com.fretes.azchip.v1.dominio.enums.StatusFrete;
 import com.fretes.azchip.v1.dominio.ports.interfaces.FreteServicePort;
 
 import jakarta.validation.Valid;
-
-import java.util.List;
 
 import lombok.RequiredArgsConstructor;
 
